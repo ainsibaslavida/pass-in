@@ -12,7 +12,6 @@ import rocketseat.com.passin.dto.attendee.AttendeeDetails;
 import rocketseat.com.passin.dto.attendee.AttendeesListResponseDTO;
 import rocketseat.com.passin.dto.attendee.AttendeeBadgeDTO;
 import rocketseat.com.passin.repositories.AttendeeRepository;
-import rocketseat.com.passin.repositories.CheckinRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -33,7 +32,7 @@ public class AttendeeService {
 
         List<AttendeeDetails> attendeeDetailsList = attendeeList.stream().map(attendee -> {
             Optional<CheckIn> checkIn = this.checkInService.getCheckIn(attendee.getId());
-            LocalDateTime checkedInAt = checkIn.<LocalDateTime>map(CheckIn::getCreatedAt).orElse(null);
+            LocalDateTime checkedInAt = checkIn.map(CheckIn::getCreatedAt).orElse(null);
             return new AttendeeDetails(attendee.getId(), attendee.getName(), attendee.getEmail(), attendee.getCreatedAt(), checkedInAt);
         }).toList();
 

@@ -56,9 +56,9 @@ public class EventService {
         newAttendee.setEvent(event);
         newAttendee.setCreatedAt(LocalDateTime.now());
 
-        this.attendeeService.registerAttendee(newAttendee);
+        Attendee savedAttendee = this.attendeeService.registerAttendee(newAttendee);
 
-        return new AttendeeIdDTO(newAttendee.getId());
+        return new AttendeeIdDTO(savedAttendee.getId());
     }
 
     private String createSlug(String text) {

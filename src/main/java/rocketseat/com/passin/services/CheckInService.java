@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import rocketseat.com.passin.domain.attendee.Attendee;
 import rocketseat.com.passin.domain.checkin.CheckIn;
 import rocketseat.com.passin.domain.checkin.exceptions.CheckInAlreadyExistsException;
-import rocketseat.com.passin.repositories.CheckinRepository;
+import rocketseat.com.passin.repositories.CheckInRepository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CheckInService {
-    private final CheckinRepository checkinRepository;
+    private final CheckInRepository checkinRepository;
 
     public void registerCheckIn(Attendee attendee) {
         this.verifyCheckInExists(attendee.getId());
